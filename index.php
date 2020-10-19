@@ -1,4 +1,25 @@
  <?php
+ {
+ ?>
+<form class="form_auth_style" style="
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    width: 50%;
+    background-color: #7300AB;
+    border-radius: 10px;
+    border: 1px solid black;"action="" method="POST" >
+    <label align="center">Your email</label>
+      <input type="email" name="auth_email" placeholder="Your Email" required>
+      <label align="center">Your Name</label>
+      <input type="name" name="auth_name" placeholder="Your Name" required>
+      <label align="center" >Your Password</label>
+      <input type="password" name="auth_pass" placeholder="Your Password" required >
+      <button class="form_auth_button" type="submit" name="form_auth_submit">Sign In</button>
+    </form>
+ <?php
+ }
+ ?>
+ <?php
  if (isset($_POST['auth_email']) && isset($_POST['auth_name']) && isset($_POST['auth_pass'])) {
 $mail = $_POST['auth_email'];
 $name = $_POST['auth_name'];
@@ -10,15 +31,14 @@ $password = "Q1qw2we3e!";
 $dbname = "db";
 $db_table = 'users';
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+$mysqli = new mysqli($db_host,$db_user,$db_password,$db_base);
 
-$sql = "SELECT * FROM users";
-$result = $sql->query("INSERT INTO".$db_table." (name,text) VALUES ('$mail', '$name', '$pass')");
+	if ($mysqli->connect_error) {
+	    die('Ошибка : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
+	}
+
+
+$result = $sql->query("INSERT INTO".$db_table." (auth_email,auth_name,auth_pass) VALUES ('$mail', '$name', '$pass')");
 
 if($result==true) {
 	echo "Yes"
@@ -26,16 +46,4 @@ if($result==true) {
 	echo "No"
 }
 }
-
-
-/*$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    echo "id: " . $row["id"]. " - Name: " . $row["first_name"]. " " . $row["second_name"].  " " .$row["email"]. "<br>";
-  }
-} else {
-  echo "0 results";
-}
-$conn->close();*/
 ?> 
