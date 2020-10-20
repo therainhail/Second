@@ -44,20 +44,19 @@ border: 1px solid black;" action="" method="POST" >
 </html>
 
  <?php
-$mail = $_POST['email'];
-$name = $_POST['name'];
-$sname = $_POST['sname'];
-$pass = $_POST['pass'];
-
  if (isset($_POST['name']) && isset($_POST['sname']) && isset($_POST['email']) && isset($_POST['pass'])) {
+  $mail = $_POST['email'];
+  $name = $_POST['name'];
+  $sname = $_POST['sname'];
+  $pass = $_POST['pass'];
 
-$result = $mysql->query("INSERT INTO".$db_table." (first_name,second_name,email,pass) VALUES ('$name', '$name', '$email','$pass')");
+  $result = $mysql->query("INSERT INTO ".$db_table." (first_name,second_name,email,password) VALUES ('$name','$sname','$mail','$pass')");
 
-if($result==true) {
-  echo "Yes"
-} else {
-  echo "No"
-}
+   /*if($result==true) {
+      echo "Yes"
+    } else {
+      echo "No"
+    }*/
 }
 ?> 
 
