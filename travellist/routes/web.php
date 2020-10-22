@@ -15,14 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 Route::get('/signin', function () {
     return view('signin');
 });
 Route::get('/signup', function () {
     return view('signup');
 });
-Route::post('/signup/submit', function () {
-    return view('AuthController@sign_up');
-});
-
+Route::post('/signup/sign_up', 'App\Http\Controllers\AuthController@sign_up')->name('cont-form');
+Route::post('/signin/sign_in', 'App\Http\Controllers\LogController@sign_in')->name('cont-form1');
