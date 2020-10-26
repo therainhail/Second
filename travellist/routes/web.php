@@ -24,3 +24,6 @@ Route::get('/signup', function () {
 });
 Route::post('/signup/sign_up', 'App\Http\Controllers\AuthController@sign_up')->name('cont-form');
 Route::post('/signin/sign_in', 'App\Http\Controllers\LogController@sign_in')->name('cont-form1');
+
+
+Route::resource('users', 'App\Http\Controllers\UserController');

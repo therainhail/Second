@@ -70,7 +70,7 @@ a {
     <input type="text" placeholder="Введите Имя" name="login" required>
 
     <label><b>Фамилия</b></label>
-    <input type="text" placeholder="Введите Фамилия" name="login2" required>
+    <input type="text" placeholder="Введите Фамилию" name="login2" required>
 
 
     <label><b>Email</b></label>
@@ -86,5 +86,5 @@ a {
         </form>
 
 
-    
+
 @endsection
